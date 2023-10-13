@@ -100,10 +100,10 @@ class InvoicesController extends Controller
 
     public function destroy(invoices $invoices)
     {
-//        invoices::where('id', request('id'))->delete();
-//        invoices_details::where('invoices_id', request('id'))->delete();
-//        session()->flash('delete','تم حذف الفاتورة بنجاح');
-//        return redirect('/invoices');
+        invoices::where('id', request('id'))->delete();
+        invoices_details::where('invoices_id', request('id'))->delete();
+        session()->flash('delete','تم حذف الفاتورة بنجاح');
+        return redirect('/invoices');
     }
 
     public function getproducts($id)

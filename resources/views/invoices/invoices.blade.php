@@ -84,7 +84,7 @@
 												<td>{{$invoice->Value_VAT}}</td>
 												<td>{{$invoice->Rate_VAT}}</td>
 												<td>{{$invoice->Total}}</td>
-												<td>
+                                                <td>
                                                     @if ($invoice->Value_Status == 1)
                                                         <span class="text-success">{{ $invoice->Status }}</span>
                                                     @elseif($invoice->Value_Status == 2)
