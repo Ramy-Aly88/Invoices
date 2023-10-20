@@ -3,17 +3,13 @@
     قائمة الفواتير
 @stop
 @section('css')
-
     <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-
-
     <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
-
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -95,6 +91,20 @@
 
                                                 </td>
 												<td>{{$invoice->note}}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button aria-expanded="false" aria-haspopup="true"
+                                                                class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
+                                                                type="button">العمليات<i class="fas fa-caret-down ml-1"></i></button>
+                                                        <div class="dropdown-menu tx-13">
+
+                                                                <a class="dropdown-item"
+                                                                   href=" {{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل
+                                                                    الفاتورة</a>
+                                                        </div>
+                                                    </div>
+                    </div>
+                                                </td>
 
 											</tr>
                             @endforeach
@@ -105,8 +115,6 @@
 						</div>
 					</div>
 					<!--/div-->
-
-
 			<!-- Container closed -->
 		</div>
 		<!-- main-content closed -->
