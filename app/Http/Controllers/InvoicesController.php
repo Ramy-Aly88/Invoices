@@ -20,8 +20,8 @@ class InvoicesController extends Controller
 
     public function index()
     {
-        $invoices=invoices::all();
-        return view('invoices.invoices',compact('invoices'));
+        $invoices = invoices::all();
+        return view('invoices.invoices', compact('invoices'));
     }
 
 
@@ -33,7 +33,7 @@ class InvoicesController extends Controller
 
     public function store(Request $request)
     {
-             invoices::create([
+        invoices::create([
             'invoice_number' => $request->invoice_number,
             'invoice_Date' => $request->invoice_Date,
             'Due_date' => $request->Due_date,
@@ -83,27 +83,59 @@ class InvoicesController extends Controller
         return back();
     }
 
-    public function show(invoices $invoices)
+
+    public function edit($id)
     {
+        $invoices = invoices::where('id', $id)->first();
+        $sections = sections::all();
 
-    }
-
-   public function edit(invoices $invoices)
-    {
-
+        return view('invoices.edit_invoice', compact('invoices', 'sections'));
     }
 
     public function update(Request $request, invoices $invoices)
     {
+        $invoices = invoices::findOrFail($request->invoice_id);
+        $invoices->update([
+            'invoice_number' => $request->invoice_number,
+            'invoice_Date' => $request->invoice_Date,
+            'Due_date' => $request->Due_date,
+            'product' => $request->product,
+            'section_id' => $request->Section,
+            'Amount_collection' => $request->Amount_collection,
+            'Amount_Commission' => $request->Amount_Commission,
+            'Discount' => $request->Discount,
+            'Value_VAT' => $request->Value_VAT,
+            'Rate_VAT' => $request->Rate_VAT,
+            'Total' => $request->Total,
+            'note' => $request->note,
+        ]);
 
+        session()->flash('edit', 'تم تعديل الفاتورة بنجاح');
+        return back();
     }
 
-    public function destroy(invoices $invoices)
+    public function destroy(Request $request)
     {
-        invoices::where('id', request('id'))->delete();
-        invoices_details::where('invoices_id', request('id'))->delete();
-        session()->flash('delete','تم حذف الفاتورة بنجاح');
-        return redirect('/invoices');
+        $id = $request->invoice_id;
+        $invoices = invoices::where('id', $id)->first();
+        $Details = invoice_attachments::where('invoice_id', $id)->first();
+        invoice_attachments::where('invoice_id', request('id'))->delete();
+        invoices_details::where('id_Invoice', request('id'))->delete();
+        $id_page = $request->id_page;
+
+
+        if (!$id_page == 2) {
+
+            if (!empty($Details->invoice_number)) {
+
+                Storage::disk('public_uploads')->deleteDirectory($Details->invoice_number);
+            }
+
+            $invoices->forceDelete();
+            session()->flash('delete_invoice');
+            return redirect('/invoices');
+
+        }
     }
 
     public function getproducts($id)
