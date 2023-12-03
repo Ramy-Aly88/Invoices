@@ -80,7 +80,7 @@ class InvoicesController extends Controller
         }
 
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
-        return back();
+        return redirect('/invoices');
     }
 
 
@@ -114,11 +114,13 @@ class InvoicesController extends Controller
         return back();
     }
 
+
     public function destroy(Request $request)
     {
         $id = $request->invoice_id;
         $invoices = invoices::where('id', $id)->first();
         $Details = invoice_attachments::where('invoice_id', $id)->first();
+        $IDetails = invoices_details::where('id_Invoice', $id)->first();
         invoice_attachments::where('invoice_id', request('id'))->delete();
         invoices_details::where('id_Invoice', request('id'))->delete();
         $id_page = $request->id_page;
@@ -132,6 +134,8 @@ class InvoicesController extends Controller
             }
 
             $invoices->forceDelete();
+            $Details->forceDelete();
+            $IDetails->forceDelete();
             session()->flash('delete_invoice');
             return redirect('/invoices');
 
