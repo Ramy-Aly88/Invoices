@@ -104,26 +104,21 @@
                                                     @else
                                                         <span class="text-warning">{{ $invoice->Status }}</span>
                                                     @endif
-
                                                 </td>
 												<td>{{$invoice->note}}</td>
-
                                             <td>
-
-
-
                                                         <div class="dropdown dropleft">
                                                             <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-danger dropdown-toggle btn-sm"
                                                                     data-toggle="dropdown" id="dropleftMenuButton" type="button">العمليات</button>
                                                             <div aria-labelledby="dropleftMenuButton" class="dropdown-menu tx-9">
                                                                 <a class="dropdown-item"
-                                                                   href=" {{ url('edit_invoice') }}/{{ $invoice->id }}">تعديل
-                                                                    الفاتورة</a>
 
                                                                 <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
                                                                    data-toggle="modal" data-target="#delete_invoice"><i
                                                                         class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
                                                                     الفاتورة</a>
+
+                                                                    <a class="dropdown-item" href="{{ URL::route('Status_show', [$invoice->id]) }}"><i  class=" text-success fas fa-money-bill"> </i> تغير حالة الدفع </a>
 
                                                             </div>
                                                         </div>
@@ -132,7 +127,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                             </td>
 											</tr>
                             @endforeach
@@ -140,8 +134,6 @@
 									</table>
 								</div>
 							</div>
-
-
     <!-----------------------------------------START modalموديلة حذف الفاتورة------------------------>
         <div class="modal fade" id="delete_invoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">

@@ -28,6 +28,8 @@ Route::get('View_file/{invoice_number}/{file_name}', 'InvoicesDetailsController@
 Route::post('delete_file', 'InvoicesDetailsController@destroy')->name('delete_file');
 
 Route::get('/edit_invoice/{id}', 'InvoicesController@edit');
+Route::get('/Status_show/{id}', 'InvoicesController@show')->name('Status_show');
+Route::post('/Status_Update/{id}', 'InvoicesController@Status_Update')->name('Status_Update');
 
 
 
