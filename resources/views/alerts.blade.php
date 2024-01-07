@@ -59,12 +59,12 @@
 											</button>
 											<strong>Well done!</strong> You successfully read this important alert message.
 										</div>
-										<div class="alert alert-info" role="alert">
+										<div class="alert alert-" role="alert">
 											<button aria-label="Close" class="close" data-dismiss="alert" type="button">
 												<span aria-hidden="true">&times;</span>
 											</button>
 											<strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-										</div>
+										</div>info
 										<div class="alert alert-warning" role="alert">
 											<button aria-label="Close" class="close" data-dismiss="alert" type="button">
 												<span aria-hidden="true">&times;</span>
