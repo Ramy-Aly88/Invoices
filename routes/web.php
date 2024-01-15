@@ -39,5 +39,5 @@ Route::resource('Archive', 'InvoiceArchiveController');
 
 
 
-
+Route::get('Print_invoice/{id}','InvoicesController@Print_invoice');
 Route::get('/{page}', 'AdminController@index');
