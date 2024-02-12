@@ -111,7 +111,7 @@ class InvoicesController extends Controller
         ]);
 
         session()->flash('edit', 'تم تعديل الفاتورة بنجاح');
-        return back();
+        return redirect('/invoices');
     }
 
     public  function show($id)
@@ -159,6 +159,7 @@ class InvoicesController extends Controller
                 'Payment_Date' => $request->Payment_Date,
                 'user' => (Auth::user()->name),
             ]);
+            return redirect('/invoices');
         }
     }
     public function destroy(Request $request)
