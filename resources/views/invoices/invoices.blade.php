@@ -28,12 +28,12 @@
 @endsection
 @section('content')
 
-    @if (session()->has('delete_invoice'))
+    @if (session()->has('Add'))
         <script>
             window.onload = function() {
                 notif({
-                    msg: "تم حذف الفاتورة بنجاح",
-                    type: "error"
+                    msg: "تم اضافة الفاتورة بنجاح",
+                    type: "success"
                 })
             }
 
@@ -62,7 +62,17 @@
 
         </script>
     @endif
+    @if (session()->has('delete_invoice'))
+        <script>
+            window.onload = function() {
+                notif({
+                    msg: "تم حذف الفاتورة بنجاح",
+                    type: "error"
+                })
+            }
 
+        </script>
+    @endif
 
     <!-- row -->
     <div class="row">
