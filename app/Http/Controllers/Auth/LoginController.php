@@ -37,4 +37,16 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+                /**
+                 كود الصلاحية للمستخدم للتأكيد ان كان مفعل وله الصلاحية فى الدخول ام لا
+                 **/
+    protected function credentials(\Illuminate\Http\Request $request)
+    {
+        return ['email' => $request->email, 'password' => $request->password, 'status' => 'مفعل'];
+
+    }
+                /**
+                 نهاية كود الصلاحية
+                 **/
 }

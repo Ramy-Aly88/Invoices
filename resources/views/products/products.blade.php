@@ -81,8 +81,10 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        @can('اضافة منتج')
                         <h5 class="modal-title" id="exampleModalLabel">اضافة منتج</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        @endcan
                     </div>
                     <form action="{{ route('products.store') }}" method="post">
                         {{ csrf_field() }}
@@ -122,10 +124,12 @@ aria-hidden="true">
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
+            @can('تعديل منتج')
             <h5 class="modal-title" id="exampleModalLabel">تعديل منتج</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            @endcan
         </div>
         <form action='products/update' method="post">
             {{ method_field('patch') }}
@@ -201,8 +205,10 @@ aria-hidden="true">
             <div class="card mg-b-20">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
+                        @can('اضافة منتج')
                         <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal"><i
-                                class="fas fa-plus"></i>&nbsp; اضافة منتج</button><br><br>
+                                class="fas fa-plus"></i>&nbsp; اضافة منتج</button><br>
+                        @endcan
                     </div>
                 </div>
                 <div class="card-body">
@@ -225,18 +231,23 @@ aria-hidden="true">
                                      <tr>
                                         <td>{{ $i }}</td>
                                         <td>{{ $Product->Product_name }}</td>
-                                        <td>{{ $Product->section->section_name }}</td> 
+                                        <td>{{ $Product->section->section_name }}</td>
                                         <td>{{ $Product->description }}</td>
                                         <td>
+
+                                            @can('تعديل منتج')
                                             <button class="btn btn-outline-success btn-sm"
                                                 data-name="{{ $Product->Product_name }}" data-pro_id="{{ $Product->id }}"
                                                 data-section_name="{{ $Product->section->section_name }}"
                                                 data-description="{{ $Product->description }}" data-toggle="modal"
                                                 data-target="#edit_Product">تعديل</button>
+                                            @endcan
 
+                                            @can('حذف منتج')
                                             <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $Product->id }}"
                                                 data-product_name="{{ $Product->Product_name }}" data-toggle="modal"
                                                 data-target="#modaldemo9">حذف</button>
+                                            @endcan
                                         </td>
                                      </tr>
                                  @endforeach

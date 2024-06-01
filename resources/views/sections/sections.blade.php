@@ -19,9 +19,9 @@
 							<h4 class="content-title mb-0 my-auto">الاعدادات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/   الأقسام </span>
 						</div>
 					</div>
-				
+
 				</div>
-			
+
 @endsection
 @section('content')
 
@@ -78,7 +78,7 @@
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
 
-					
+
  <!-----------start إطار الأضافة المنبثق------------------------------------------------------------->
 	<a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-newspaper" data-toggle="modal" href="#modaldemo8">إضافة قسم</a>
 			<div class="modal" id="modaldemo8">
@@ -91,17 +91,17 @@
 						<div class="modal-body">
 							<form action="{{ route('sections.store') }}" method="post">
 								{{ csrf_field() }}
-		
+
 								<div class="form-group">
 									<label for="exampleInputEmail1">اسم القسم</label>
 									<input type="text" class="form-control" id="section_name" name="section_name">
 								</div>
-		
+
 								<div class="form-group">
 									<label for="exampleFormControlTextarea1">ملاحظات</label>
 									<textarea class="form-control" id="description" name="description" rows="3"></textarea>
 								</div>
-		
+
 								<div class="modal-footer">
 									<button type="submit" class="btn btn-success">تاكيد</button>
 									<button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -135,23 +135,24 @@
 							 <tr>
 								<td>{{$R->id }} </td>
 								<td> {{$R->section_name }}</td>
-								<td>{{$R->description }} </td>	
+								<td>{{$R->description }} </td>
 								<td>
-									
+									@can('تعديل قسم')
 									<a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
 										data-id="{{ $R->id }}" data-section_name="{{ $R->section_name }}"
 										data-description="{{ $R->description }}" data-toggle="modal"
 										href="#exampleModal2" title="تعديل"><i class="las la-pen"></i></a>
-							
+                                    @endcan
+                                        @can('حذف قسم')
 										<a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
 										data-id="{{ $R->id }}" data-section_name="{{ $R->section_name }}"
 										data-toggle="modal" href="#modaldemo9" title="حذف"><i
 											class="las la-trash"></i></a>
-							
-								</td>			
+                                         @endcan
+								</td>
 							 </tr>
-							 
-							@endforeach                 
+
+							@endforeach
 						</tbody>
 					</table>
 				</div>
@@ -159,7 +160,7 @@
 
  <!---------------------- إطار التعديل المنبثق -------------------------->
 				 <div class="modal fade"   id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
-				 
+
 				 <div class="modal-dialog" role="document">
 					 <div class="modal-content">
 						 <div class="modal-header">
@@ -169,7 +170,7 @@
 							 </button>
 						 </div>
 						 <div class="modal-body">
-		 
+
 							 <form action="sections/update" method="post" autocomplete="off">
 								 {{ method_field('patch') }}
 								 {{ csrf_field() }}
