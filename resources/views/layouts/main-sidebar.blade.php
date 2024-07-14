@@ -77,8 +77,8 @@
                                     </li>
                                 @endcan
 
-                                @can('تقرير العملاء')
-                                    <li><a class="slide-item" href="{{ url('/' . ($page = 'customers_report')) }}">تقارير العملاء</a>
+                                @can('تقرير الأقسام والمنتجات')
+                                    <li><a class="slide-item" href="{{ url('/' . ($page = 'customers_report')) }}">تقرير الأقسام والمنتجات</a>
                                     </li>
                                 @endcan
                             </ul>

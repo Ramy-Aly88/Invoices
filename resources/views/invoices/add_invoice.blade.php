@@ -95,7 +95,7 @@
                                 <input type="text" class="form-control" id="inputName" name="Amount_collection"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                             </div>
-                        </div>
+                             </div>
 
 
                         {{-- 3 --}}

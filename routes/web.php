@@ -38,7 +38,6 @@ Route::get('Invoice_UnPaid','InvoicesController@Invoice_UnPaid');
 Route::resource('Archive', 'InvoiceArchiveController');
 
 
-
 Route::get('Print_invoice/{id}','InvoicesController@Print_invoice');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -47,5 +46,13 @@ Route::resource('roles','RoleController');
 Route::resource('users','UserController');
 
 });
+
+Route::get('invoices_report', 'Invoices_Report@index');
+Route::post('Search_invoices', 'Invoices_Report@Search_invoices');
+
+Route::get('customers_report', 'Customers_Report@index');
+Route::post('Search_customers', 'Customers_Report@Search_customers');
+
+
 
 Route::get('/{page}', 'AdminController@index');

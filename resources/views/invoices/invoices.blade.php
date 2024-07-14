@@ -63,6 +63,19 @@
 
         </script>
     @endif
+
+
+    @if (session()->has('Status_Update'))
+        <script>
+            window.onload = function() {
+                notif({
+                    msg: "تم تحديث حالة الدفع بنجاح",
+                    type: "warning"
+                })
+            }
+
+        </script>
+    @endif
     @if (session()->has('delete_invoice'))
         <script>
             window.onload = function() {
@@ -74,6 +87,8 @@
 
         </script>
     @endif
+
+
 
     <!-- row -->
     <div class="row">

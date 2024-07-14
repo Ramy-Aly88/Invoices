@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-الصفحة الرئيسية للوحة التحكم
+صفحة لوحة تحكم الفواتير الرئيسية
 @endsection
 @section('css')
     <!--  Owl-carousel css-->

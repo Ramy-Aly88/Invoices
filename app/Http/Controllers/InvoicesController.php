@@ -130,6 +130,7 @@ class InvoicesController extends Controller
                 'Status' => $request->Status,
                 'Payment_Date' => $request->Payment_Date,
             ]);
+
             invoices_Details::create([
                 'id_Invoice' => $request->invoice_id,
                 'invoice_number' => $request->invoice_number,
@@ -142,6 +143,7 @@ class InvoicesController extends Controller
                 'user' => (Auth::user()->name),
             ]);
         }
+
         else {
             $invoices->update([
                 'Value_Status' => 3,
@@ -159,8 +161,10 @@ class InvoicesController extends Controller
                 'Payment_Date' => $request->Payment_Date,
                 'user' => (Auth::user()->name),
             ]);
-            return redirect('/invoices');
         }
+        session()->flash('Status_Update');
+        return redirect('/invoices');
+
     }
     public function destroy(Request $request)
     {
