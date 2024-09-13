@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 29, 2024 at 07:00 PM
+-- Generation Time: Sep 13, 2024 at 07:24 PM
 -- Server version: 8.3.0
 -- PHP Version: 7.4.33
 
@@ -67,16 +67,19 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `invoices_section_id_foreign` (`section_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `invoices`
 --
 
 INSERT INTO `invoices` (`id`, `invoice_number`, `invoice_Date`, `Due_date`, `product`, `section_id`, `Amount_collection`, `Amount_Commission`, `Discount`, `Value_VAT`, `Rate_VAT`, `Total`, `Status`, `Value_Status`, `note`, `Payment_Date`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(16, 'wrwe-898', '2024-08-28', '2024-08-31', 'فىبفىقفى', 4, 313133.00, 24424.00, 2323.00, 1105.05, '5%', 23206.05, 'مدفوعة', 1, NULL, '2024-08-30', NULL, '2024-08-28 16:54:40', '2024-08-28 16:54:56'),
-(14, 'sfs-564s6', '2024-08-28', '2024-08-31', 'بلايلايلا', 3, 342431.00, 4223.00, 31.00, 209.60, '5%', 4401.60, 'غير مدفوعة', 2, NULL, NULL, NULL, '2024-08-28 16:52:59', '2024-08-28 16:52:59'),
-(15, 'ww-5954', '2024-08-28', '2024-08-31', 'ثصبصب', 2, 64616.00, 23311.00, 231.00, 1154.00, '5%', 24234.00, 'مدفوعة جزئيا', 3, NULL, '2024-08-29', NULL, '2024-08-28 16:53:48', '2024-08-28 16:54:05');
+(40, 'esg-9531', '2024-09-07', '2024-09-18', 'ببلا', 2, 36000.00, 2700.00, 0.00, 378.00, '14%', 3078.00, 'غير مدفوعة', 2, 'ssfs', NULL, NULL, '2024-09-07 14:46:47', '2024-09-07 14:46:47'),
+(27, 'AZ-999', '2024-09-05', '2024-09-18', 'بلايلايلا', 3, 98271.00, 9900.00, 810.00, 1272.60, '14%', 10362.60, 'غير مدفوعة', 2, NULL, NULL, NULL, '2024-09-05 03:10:54', '2024-09-05 03:10:54'),
+(16, 'wrwe-898', '2024-08-28', '2024-08-31', 'فىبفىقفى', 4, 313133.00, 24424.00, 2323.00, 1105.05, '5%', 23206.05, 'مدفوعة جزئيا', 3, NULL, '2024-09-05', NULL, '2024-08-28 16:54:40', '2024-09-05 12:03:26'),
+(42, 'sads-9', '2024-09-13', '2024-09-27', 'بلايلايلا', 3, 656568.00, 8973.00, 0.00, 448.65, '5%', 9421.65, 'غير مدفوعة', 2, NULL, NULL, NULL, '2024-09-13 16:05:51', '2024-09-13 16:05:51'),
+(15, 'ww-5954', '2024-08-28', '2024-08-31', 'ثصبصب', 2, 64616.00, 23311.00, 231.00, 1154.00, '5%', 24234.00, 'مدفوعة', 1, NULL, '2024-09-05', NULL, '2024-08-28 16:53:48', '2024-09-05 12:03:41'),
+(41, 'sfs-603', '2024-09-07', '2024-09-11', 'فىبفىقفى', 4, 450000.00, 9000.00, 0.00, 1260.00, '14%', 10260.00, 'غير مدفوعة', 2, 'frwr', NULL, NULL, '2024-09-07 15:00:20', '2024-09-07 15:00:20');
 
 -- --------------------------------------------------------
 
@@ -100,15 +103,20 @@ CREATE TABLE IF NOT EXISTS `invoices_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `invoices_details_id_invoice_foreign` (`id_Invoice`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `invoices_details`
 --
 
 INSERT INTO `invoices_details` (`id`, `id_Invoice`, `invoice_number`, `product`, `Section`, `Status`, `Value_Status`, `Payment_Date`, `note`, `user`, `created_at`, `updated_at`) VALUES
+(41, 16, 'wrwe-898', 'فىبفىقفى', '4', 'مدفوعة جزئيا', 3, '2024-09-05', NULL, 'Ramy', '2024-09-05 12:03:26', '2024-09-05 12:03:26'),
+(42, 15, 'ww-5954', 'ثصبصب', '2', 'مدفوعة', 1, '2024-09-05', NULL, 'Ramy', '2024-09-05 12:03:41', '2024-09-05 12:03:41'),
+(55, 41, 'sfs-603', 'فىبفىقفى', '4', 'غير مدفوعة', 2, NULL, 'frwr', 'Ramy', '2024-09-07 15:00:20', '2024-09-07 15:00:20'),
+(56, 42, 'sads-9', 'بلايلايلا', '3', 'غير مدفوعة', 2, NULL, NULL, 'Ramy', '2024-09-13 16:05:51', '2024-09-13 16:05:51'),
+(54, 40, 'esg-9531', 'ببلا', '2', 'غير مدفوعة', 2, NULL, 'ssfs', 'Ramy', '2024-09-07 14:46:47', '2024-09-07 14:46:47'),
+(39, 27, 'AZ-999', 'بلايلايلا', '3', 'غير مدفوعة', 2, NULL, NULL, 'Ramy', '2024-09-05 03:10:54', '2024-09-05 03:10:54'),
 (28, 16, 'wrwe-898', 'فىبفىقفى', '4', 'مدفوعة', 1, '2024-08-30', NULL, 'Ramy', '2024-08-28 16:54:56', '2024-08-28 16:54:56'),
-(24, 14, 'sfs-564s6', 'بلايلايلا', '3', 'غير مدفوعة', 2, NULL, NULL, 'Ramy', '2024-08-28 16:52:59', '2024-08-28 16:52:59'),
 (25, 15, 'ww-5954', 'ثصبصب', '2', 'غير مدفوعة', 2, NULL, NULL, 'Ramy', '2024-08-28 16:53:48', '2024-08-28 16:53:48'),
 (26, 15, 'ww-5954', 'ثصبصب', '2', 'مدفوعة جزئيا', 3, '2024-08-29', NULL, 'Ramy', '2024-08-28 16:54:05', '2024-08-28 16:54:05'),
 (27, 16, 'wrwe-898', 'فىبفىقفى', '4', 'غير مدفوعة', 2, NULL, NULL, 'Ramy', '2024-08-28 16:54:40', '2024-08-28 16:54:40');
@@ -130,15 +138,18 @@ CREATE TABLE IF NOT EXISTS `invoice_attachments` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `invoice_attachments_invoice_id_foreign` (`invoice_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `invoice_attachments`
 --
 
 INSERT INTO `invoice_attachments` (`id`, `file_name`, `invoice_number`, `Created_by`, `invoice_id`, `created_at`, `updated_at`) VALUES
+(41, 'Screenshot 2024-08-26 204507.png', 'sads-9', 'Ramy', 42, '2024-09-13 16:05:51', '2024-09-13 16:05:51'),
+(39, 'Screenshot 2024-08-26 204507.png', 'esg-9531', 'Ramy', 40, '2024-09-07 14:46:47', '2024-09-07 14:46:47'),
+(26, 'Screenshot 2024-07-29 202923.png', 'AZ-999', 'Ramy', 27, '2024-09-05 03:10:54', '2024-09-05 03:10:54'),
+(40, 'Screenshot 2024-07-29 203246.png', 'sfs-603', 'Ramy', 41, '2024-09-07 15:00:20', '2024-09-07 15:00:20'),
 (15, 'Screenshot 2024-07-29 203317.png', 'wrwe-898', 'Ramy', 16, '2024-08-28 16:54:40', '2024-08-28 16:54:40'),
-(13, 'Screenshot 2024-08-26 204507.png', 'sfs-564s6', 'Ramy', 14, '2024-08-28 16:52:59', '2024-08-28 16:52:59'),
 (14, 'Screenshot 2024-07-29 203039.png', 'ww-5954', 'Ramy', 15, '2024-08-28 16:53:48', '2024-08-28 16:53:48');
 
 -- --------------------------------------------------------
@@ -153,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -168,7 +179,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2023_08_25_195445_create_products_table', 1),
 (7, '2023_09_21_182926_create_invoices_details_table', 1),
 (8, '2023_09_21_190517_create_invoice_attachments_table', 1),
-(9, '2024_04_26_172531_create_permission_tables', 1);
+(9, '2024_04_26_172531_create_permission_tables', 1),
+(10, '2024_08_30_121525_create_notifications_table', 2);
 
 -- --------------------------------------------------------
 
@@ -207,6 +219,34 @@ CREATE TABLE IF NOT EXISTS `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\User', 1),
 (2, 'App\\User', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint UNSIGNED NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('83eed5ca-4e97-481b-9c32-76e92a345481', 'App\\Notifications\\Add_invoice_new', 'App\\User', 1, '{\"id\":42,\"title\":\" \\u0625\\u0636\\u0627\\u0641\\u0629 \\u0641\\u0627\\u062a\\u0648\\u0631\\u0629 \\u062c\\u062f\\u064a\\u062f \\u0628\\u0648\\u0627\\u0633\\u0637\\u0629 :\",\"user\":\"Ramy\"}', NULL, '2024-09-13 16:05:53', '2024-09-13 16:05:53'),
+('a096090c-efa0-4357-be8e-c294d3b208cb', 'App\\Notifications\\Add_invoice_new', 'App\\User', 2, '{\"id\":42,\"title\":\" \\u0625\\u0636\\u0627\\u0641\\u0629 \\u0641\\u0627\\u062a\\u0648\\u0631\\u0629 \\u062c\\u062f\\u064a\\u062f \\u0628\\u0648\\u0627\\u0633\\u0637\\u0629 :\",\"user\":\"Ramy\"}', NULL, '2024-09-13 16:05:53', '2024-09-13 16:05:53');
 
 -- --------------------------------------------------------
 
@@ -457,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `roles_name`, `Status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ramy', 'Aly@mans.com', NULL, '$2y$10$hikE4w4dSfvranfdpxr1TuAcnPn4yhWHbKrP013tLz4UfU2UaVhyS', '[\"Owner\"]', 'مفعل', 'ZUW0ee6BzKSs98U6EySgVsDsx9cjcPi25GDFTe3dJjykm34eIqyMEYwWJwjM', '2024-07-12 15:05:45', '2024-07-12 15:05:45'),
+(1, 'Ramy', 'Aly@mans.com', NULL, '$2y$10$hikE4w4dSfvranfdpxr1TuAcnPn4yhWHbKrP013tLz4UfU2UaVhyS', '[\"Owner\"]', 'مفعل', 'MhjaOFnDm0IY0l0iKQ0rj7aPbmX6hpKiBB3YmShV2LT4e8fWpRebDSK1IgMQ', '2024-07-12 15:05:45', '2024-07-12 15:05:45'),
 (2, 'AZARMO', 'AZARMO@mans.com', NULL, '$2y$10$wdb/ALPF65C6n1vTlc7tF.27yIPDVyc67Q2mMCkC3IbTDlQAlM.hS', '[\"USER\"]', 'مفعل', 'w0Wk21YcKJ1Gq9gJccfrSQBxcq59n5AzeA6fSrBv72SPoqH1pTWUlJfXcF0O', '2024-07-12 15:13:47', '2024-07-12 15:13:47');
 COMMIT;
 
