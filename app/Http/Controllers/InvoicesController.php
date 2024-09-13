@@ -78,6 +78,13 @@ class InvoicesController extends Controller
             $imageName = $request->pic->getClientOriginalName();
             $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
         }
+            $user = User::get();
+            $invoices = invoices::latest()->first();
+            Notification::send($user, new \App\Notifications\Add_invoice_new($invoices));
+//        $user = User::get();
+//        $invoices = invoices::latest()->first();
+//        Notification::send($user, new \App\Notifications\Add_invoice_new($invoices));
+
 
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
         return redirect('/invoices');
