@@ -53,6 +53,8 @@ Route::post('Search_invoices', 'Invoices_Report@Search_invoices');
 Route::get('customers_report', 'Customers_Report@index');
 Route::post('Search_customers', 'Customers_Report@Search_customers');
 
+Route::get('MarkAsRead_all', 'InvoicesController@MarkAsRead_all')->name('MarkAsRead_all');
+
 
 
 Route::get('/{page}', 'AdminController@index');

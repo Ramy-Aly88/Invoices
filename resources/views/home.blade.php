@@ -158,7 +158,7 @@
             <div class="card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">  نسبة احصائية فواتير رسم بيانى</h4>
+                        <h4 class="card-title mb-0">نسبة احصائية الفواتير</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
 

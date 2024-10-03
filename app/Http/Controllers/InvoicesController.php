@@ -78,12 +78,13 @@ class InvoicesController extends Controller
             $imageName = $request->pic->getClientOriginalName();
             $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
         }
-            $user = User::get();
-            $invoices = invoices::latest()->first();
-            Notification::send($user, new \App\Notifications\Add_invoice_new($invoices));
-//        $user = User::get();
-//        $invoices = invoices::latest()->first();
-//        Notification::send($user, new \App\Notifications\Add_invoice_new($invoices));
+//            $user = User::find(Auth::user()->id);
+//            $invoices = invoices::latest()->first();
+//            Notification::send($user, new \App\Notifications\Add_invoice_new($invoices));
+
+        $user = User::get();
+        $invoices = invoices::latest()->first();
+        Notification::send($user, new \App\Notifications\Add_invoice_new($invoices));
 
 
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
@@ -121,11 +122,12 @@ class InvoicesController extends Controller
         return redirect('/invoices');
     }
 
-    public  function show($id)
+    public function show($id)
     {
         $invoices = invoices::where('id', $id)->first();
-        return view('invoices.status_update',compact('invoices'));
+        return view('invoices.status_update', compact('invoices'));
     }
+
     public function Status_Update($id, Request $request)
     {
         $invoices = invoices::findOrFail($id);
@@ -149,9 +151,7 @@ class InvoicesController extends Controller
                 'Payment_Date' => $request->Payment_Date,
                 'user' => (Auth::user()->name),
             ]);
-        }
-
-        else {
+        } else {
             $invoices->update([
                 'Value_Status' => 3,
                 'Status' => $request->Status,
@@ -173,6 +173,7 @@ class InvoicesController extends Controller
         return redirect('/invoices');
 
     }
+
     public function destroy(Request $request)
     {
         $id = $request->invoice_id;
@@ -198,8 +199,7 @@ class InvoicesController extends Controller
             session()->flash('delete_invoice');
             return redirect('/invoices');
 
-        }
-        else {
+        } else {
             $invoices->Delete();
             session()->flash('archive_invoice');
             return redirect('/Archive');
@@ -207,35 +207,51 @@ class InvoicesController extends Controller
     }
 
 
-
     public function getproducts($id)
     {
         $products = DB::table("products")->where("section_id", $id)->pluck("Product_name", "id");
         return json_encode($products);
     }
+
     public function Invoice_Paid()
     {
-        $invoices = invoices::where('value_status',1)->get();
-        return view('invoices.invoices_paid',compact('invoices'));
-        return redirect('/invoices');
-    }
-    public function Invoice_UnPaid()
-    {
-        $invoices = invoices::where('value_status',2)->get();
-        return view('invoices.invoices_unpaid',compact('invoices'));
-        return redirect('/invoices');
-    }
-    public function Invoice_Partial()
-    {
-        $invoices = invoices::where('value_status',3)->get();
-        return view('invoices.invoices_partial',compact('invoices'));
+        $invoices = invoices::where('value_status', 1)->get();
+        return view('invoices.invoices_paid', compact('invoices'));
         return redirect('/invoices');
     }
 
-public function Print_invoice($id){
-    $invoices = invoices::where('id', $id)->first();
-    return view('invoices.Print_invoice',compact('invoices'));
-}
+    public function Invoice_UnPaid()
+    {
+        $invoices = invoices::where('value_status', 2)->get();
+        return view('invoices.invoices_unpaid', compact('invoices'));
+        return redirect('/invoices');
+    }
+
+    public function Invoice_Partial()
+    {
+        $invoices = invoices::where('value_status', 3)->get();
+        return view('invoices.invoices_partial', compact('invoices'));
+        return redirect('/invoices');
+    }
+
+    public function Print_invoice($id)
+    {
+        $invoices = invoices::where('id', $id)->first();
+        return view('invoices.Print_invoice', compact('invoices'));
+    }
+
+    public function MarkAsRead_all (Request $request)
+    {
+
+        $userUnreadNotification= auth()->user()->unreadNotifications;
+
+        if($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+            return back();
+        }
+
+
+    }
 
 
 }

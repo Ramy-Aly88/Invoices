@@ -21,7 +21,7 @@ class SectionsController extends Controller
     {
         $validatedData = $request->validate([
             'section_name' => 'required|unique:sections|max:255',
-            'description' => 'required',
+//            'description' => 'required',
         ],[
 
             'section_name.required' =>'يرجي ادخال اسم القسم',
@@ -54,7 +54,7 @@ class SectionsController extends Controller
         $this->validate($request, [
 
             'section_name' => 'required|max:255|unique:sections,section_name,'.$id,
-            'description' => 'required',
+//            'description' => 'required',
         ],[
 
             'section_name.required' =>'يرجي ادخال اسم القسم',

@@ -36,7 +36,6 @@
     @endif
 <!------------------------------Start Session الأضافة--------------------------------------------------------------->
 
-
     @if (session()->has('Add'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{ session()->get('Add') }}</strong>
@@ -45,6 +44,7 @@
             </button>
         </div>
     @endif
+
 
  <!------------------------------END Session الأضافة--------------------------------------------------------------->
 
@@ -75,10 +75,10 @@
                                     <div class="tabs-menu1">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs main-nav-line">
-                                            <li><a href="#tab4" class="nav-link  " data-toggle="tab">معلومات
+                                            <li><a href="#tab4" class="nav-link active " data-toggle="tab">معلومات
                                                     الفاتورة</a></li>
-                                            <li><a href="#tab5" class="nav-link" data-toggle="tab">حالات الدفع</a></li>
-                                            <li><a href="#tab6" class="nav-link  active" data-toggle="tab">المرفقات</a></li>
+                                            <li><a href="#tab5" class="nav-link " data-toggle="tab">حالات الدفع</a></li>
+                                            <li><a href="#tab6" class="nav-link  " data-toggle="tab">المرفقات</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                     <div class="tab-content">
 
  <!-------------------------------------------Start TABمعلومات الفاتورة-------------------------------------------------------------->
-                                        <div class="tab-pane " id="tab4">
+                                        <div class="tab-pane active" id="tab4">
                                             <div class="table-responsive mt-15">
 
                                                 <table class="table table-striped" style="text-align:center">
@@ -151,7 +151,7 @@
 
 
 <!-------------------------------------------Start TAB حالات  الدفع  -------------------------------------------------------------->
-                                        <div class="tab-pane" id="tab5">
+                                        <div class="tab-pane " id="tab5">
                                             <div class="table-responsive mt-15">
                                                 <table class="table center-aligned-table mb-0 table-hover"
                                                        style="text-align:center">
@@ -208,7 +208,7 @@
 <!-------------------------------------------End TAB حالات  الدفع  -------------------------------------------------------------->
 
 <!-------------------------------------------Start TAB المرفقات  -------------------------------------------------------------->
-                                        <div class="tab-pane active" id="tab6">
+                                        <div class="tab-pane " id="tab6">
                                             <div class="card card-statistics">
 
                                                     <div class="card-body">
@@ -255,19 +255,19 @@
                                                             <td>{{ $attachment->created_at }}</td>
                                                             <td colspan="2">
 
-                                                                <a class="btn btn-outline-success btn-sm"
+                                                                <a class="btn btn-success btn-sm"
                                                                    href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
                                                                    role="button"><i class="fas fa-eye"></i>&nbsp;
                                                                     عرض</a>
 
-                                                                <a class="btn btn-outline-info btn-sm"
+                                                                <a class="btn btn-info btn-sm"
                                                                    href="{{ url('download') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
                                                                    role="button"><i
                                                                         class="fas fa-download"></i>&nbsp;
                                                                     تحميل</a>
 
 
-                                                                    <button class="btn btn-outline-danger btn-sm"
+                                                                    <button class="btn btn-danger btn-sm"
                                                                             data-toggle="modal"
                                                                             data-file_name="{{ $attachment->file_name }}"
                                                                             data-invoice_number="{{ $attachment->invoice_number }}"
@@ -299,7 +299,7 @@
                                                         {{ csrf_field() }}
                                                         <div class="modal-body">
                                                             <p class="text-center">
-                                                            <h6 style="color:red"> هل انت متاكد من عملية حذف المرفق ؟</h6>
+                                                            <h6 > هل انت متاكد من عملية حذف المرفق ؟</h6>
                                                             </p>
 
                                                             <input type="hidden" name="id_file" id="id_file" value="">
@@ -309,7 +309,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
-                                                            <button type="submit" class="btn btn-danger">تاكيد</button>
+                                                            <button type="submit" class="btn btn-warning">تاكيد</button>
                                                         </div>
                                                     </form>
                                                 </div>

@@ -51,24 +51,24 @@ class HomeController extends Controller
             ->name('barChartTest')
             ->type('bar')
             ->size(['width' => 350, 'height' => 200])
-             ->labels([ 'الفواتير المدفوعة','الفواتير المدفوعة جزئيا','الفواتير الغير المدفوعة'])
+            ->labels(['الفواتير الغير المدفوعة','الفواتير المدفوعة جزئيا', 'الفواتير المدفوعة'])
             ->datasets([
-                [
-                    "label" => "الفواتير المدفوعة",
-                    'backgroundColor' => ['#1A5319'],
-                    'data' => [$nspainvoices1]
-                ],
-				 [
-                    "label" => "الفواتير المدفوعة جزئيا",
-                    'backgroundColor' => ['#FFFF00'],
-                    'data' => [$nspainvoices3]
-                ],
                 [
                     "label" => "الفواتير الغير المدفوعة",
                     'backgroundColor' => ['#FF1E1E'],
                     'data' => [$nspainvoices2]
                 ],
 
+                [
+                    "label" => "الفواتير المدفوعة جزئيا",
+                    'backgroundColor' => ['#FFFF00'],
+                    'data' => [$nspainvoices3]
+                ],
+                [
+                    "label" => "الفواتير المدفوعة",
+                    'backgroundColor' => ['#1A5319'],
+                    'data' => [$nspainvoices1]
+                ],
 
 
 
